@@ -1,6 +1,6 @@
 # Soft Actor Critic For Simple Car Game
 
-![SimpleCarGame](ImageVideos/sac_playing.gif)
+<div style="text-align:center"><img src="ImageVideos/sac_playing.gif"></div>
 
 For more information about the game check out [**Simple car game for reinforcement learning**](https://github.com/MatthiasSchinzel/Simple-Car-Game-For-Reinforcement-Learning). Unlike most other SAC games this implementation is relying on images instead if distance vectors as input to the network. For reducing the image dimension an Autoencoder is used. This is an example on how to use the simple car game with a reinforcement learning algorithm.
 
@@ -38,11 +38,12 @@ What is really important is, that you design your loss function inside the game 
 ## 2. Technical details
 
 The environment is outputting and image which is reduced in dimensions to 55 by a convolutional autoencoder. Appended to the actual state are the last two actions that were given by the agent. This is done to control the shakiness of the driving - the environment is penalizing shaky driving based on the past actions. Hence, the agent receives a vector with 59 entries.  
-<img src="ImageVideos/RLwithAutoencoder.png" width="70%">
+<div style="text-align:center"><img src="ImageVideos/RLwithAutoencoder.png" width="70%"></div>
+
 
 ### 2.1. Convolutional autoencoder
 
-![SimpleCarGame](ImageVideos/AutoencoderImage.png)
+<div style="text-align:center"><img src="ImageVideos/AutoencoderImage.png" width="70%"></div>
 
 In order to train the SAC successfully, we need to reduce the dimensions of the image. Here I used an Autoencoder to reduce the dimension of the image. I don't want to go into the full details of the Autoencoder here, but you have an encoder and a decoder. The encoder is reducing the dimension of the image and the decoder is trying to reconstruct the image from the encoded vector. The encoded vector is what we are interested in for using SAC. The decoder is just used for training, to get a somehow meaningful encoded vector.
 
